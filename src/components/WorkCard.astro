@@ -1,0 +1,17 @@
+---
+const { title, subtitle, date, text } = Astro.props;
+---
+
+<div class="max-w-sm p-6 bg-[#2C3E3A] border-2 border-[#01251F] rounded-lg shadow-md hover:shadow-[0_4px_12px_rgba(1,37,31,0.5)] hover:scale-105 transition-all duration-300">
+  <!-- Título -->
+  <h2 class="text-xl font-bold text-[#F4F4F4] mb-2">{title}</h2>
+
+  <!-- Subtítulo -->
+  <h3 class="text-lg text-[#F4F4F4] mb-1">{subtitle}</h3>
+
+  <!-- Fecha -->
+  <p class="text-sm text-[#F4F4F4] mb-4">{date}</p>
+
+  <!-- Descripción con scroll -->
+  <p class="text-[#F4F4F4] h-24 overflow-y-auto">{text}</p>
+</div>
