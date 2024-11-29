@@ -1,0 +1,38 @@
+---
+const { title, subtitle, date, imageSrc, link } = Astro.props;
+---
+
+<div class="relative w-full h-[200px] flex items-center">
+  <!-- Imagen (sin efecto de hover) -->
+  <div class="w-36 h-36 bg-[#D1D1D1] rounded-full">
+    <img class="rounded-full bg-[#D1D1D1] w-full h-full object-contain" src={imageSrc} alt="Imagen de referencia" />
+  </div>
+
+  <!-- Contenedor de la tarjeta con efecto de hover -->
+  <div class="flex flex-col ml-[30px] bg-[#2C3E3A] border-2 border-[#01251F] rounded-lg w-full h-full hover:scale-105 hover:shadow-[0_4px_12px_rgba(1,37,31,0.5)] transition-all duration-300">
+    <div class="w-full h-[66px] bg-[#01251F] rounded-t-7px px-4">
+      <!-- Barra de título y fecha -->
+      <div class="flex justify-between items-center w-full h-full text-white">
+        <!-- Subtitulo alineado a la izquierda -->
+        <div class="text-[1.5vw] font-normal break-words">
+          {subtitle}
+        </div>
+
+        <!-- Fecha alineada a la derecha -->
+        <div class="text-[1vw] font-normal">
+          {date}
+        </div>
+      </div>
+    </div>
+
+    <!-- Titulo -->
+    <div class="flex items-center w-full h-[66px] text-white px-4">
+      <div class="text-[1.5vw] font-normal break-words">{title}</div>
+    </div>
+
+    <!-- Contenedor del botón "Visitar" en la parte inferior derecha -->
+    <div class="absolute bottom-4 right-4 px-4 py-2 bg-[#A0CBB2] rounded-[10px] flex items-center justify-center max-w-[120px]">
+      <a href={link} class="text-[#01251F] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-normal">Visit</a>
+    </div>
+  </div>
+</div>

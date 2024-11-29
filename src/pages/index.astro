@@ -1,12 +1,171 @@
 ---
-import MainSection from '../components/MainSection.jsx';
+import Layout from "../layouts/Layout.astro";
+import EducationCard from "../components/EducationCard.astro";
+import WorkCard from "../components/WorkCard.astro";
+import ProjectList from "../components/ProjectList";
+import SkillCard from "../components/SkillCard.astro";
+import ReferenceCard from "../components/ReferenceCard.astro";
+import ContactForm from "../components/ContactForm";
+import TypingEffect from "../components/TypingEffect";
+
+const { searchParams } = new URL(Astro.request.url);
+const language = searchParams.get('lang') || 'en';
+const data = language === 'es' ? await import('../../data_es.json') : await import('../../data.json');
+const testMode = true;
 ---
 
 <html>
   <head>
     <title>Fernando Vaquero</title>
   </head>
-  <body class="bg-gray-100">
-    <MainSection />
+  <body>
+    <Layout>
+      <div class=" w-full">
+
+        <!-- Sección About Me -->
+        <section id="about" class="flex flex-col items-center justify-center w-full px-8 py-16 h-screen space-y-0">
+          <!-- Títulos -->
+          <div class="mb-8 flex flex-row">
+            <h2 class="text-6xl text-[#F4F4F4] inline-block pr-2">ABOUT</h2>
+            <h2 class="text-6xl text-[#F9A825] inline-block">ME</h2>
+          </div>
+        
+          <!-- Contenedor gris encima con los círculos -->
+          <div class="w-full max-w-4xl bg-gray-700 p-4 rounded-t-lg flex items-center space-x-4 mb-0">
+            <!-- Círculos alineados a la izquierda -->
+            <div class="w-8 h-8 bg-red-500 rounded-full"></div>
+            <div class="w-8 h-8 bg-orange-500 rounded-full"></div>
+            <div class="w-8 h-8 bg-green-500 rounded-full"></div>
+          </div>
+        
+          <!-- Contenedor del texto con fondo negro -->
+          <div class="w-full max-w-4xl bg-black p-8 rounded-b-lg shadow-lg mb-0">
+            <TypingEffect text={data.about} speed={50} client:only="react" />
+          </div>
+        </section>
+
+        <!-- Línea de gradiente entre secciones -->
+        <div class="h-1 bg-gradient-to-r from-[#01251F] via-[#A0CBB2] to-[#F9A825] border-0 mb-4"></div>
+
+        <!-- Sección de educación -->
+        <section id="education" class="flex flex-col items-center justify-center space-y-8 w-full px-8 py-16">
+          <div class="mb-8 flex flex-row">
+            <h2 class="text-6xl text-[#F4F4F4] inline-block">EDUCATI</h2>
+            <h2 class="text-6xl text-[#F9A825] inline-block">ON</h2>
+          </div>
+          <div class="w-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-6">
+            {data.education.map(education => (
+              <EducationCard
+                title={education.title}
+                subtitle={education.subtitle}
+                date={education.date}
+                imageSrc={education.imageSrc}
+                link={education.link}
+              />
+            ))}
+          </div>
+        </section>
+
+        <!-- Línea de gradiente entre secciones -->
+        <div class="h-1 bg-gradient-to-r from-[#01251F] via-[#A0CBB2] to-[#F9A825] border-0 mb-4"></div>
+
+        <!-- Sección de experiencia laboral -->
+        <section id="work" class="flex flex-col items-center justify-center space-y-8 w-full px-8 py-16">
+          <div class="text-center mb-8">
+            <h2 class="text-6xl text-[#F4F4F4] inline-block pr-2">WORK</h2>
+            <h2 class="text-6xl text-[#F9A825] inline-block">EXPERIENCE</h2>
+          </div>
+
+          <div class="flex flex-col w-full max-w-4xl space-y-8">
+            {data.work.map((work, index) => (
+              <div class={`flex items-center space-x-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                <div class="flex flex-1">
+                  <WorkCard
+                    title={work.title}
+                    subtitle={work.subtitle}
+                    date={work.date}
+                    text={work.text}
+                  />
+                </div>
+                
+                <div class="flex flex-1 justify-center">
+                  <img src={work.imageSrc} alt={work.title} class="w-[300px] h-[200px] object-contain" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Línea de gradiente entre secciones -->
+        <div class="h-1 bg-gradient-to-r from-[#01251F] via-[#A0CBB2] to-[#F9A825] border-0 mb-4"></div>
+
+        <!-- Sección de proyectos -->
+        <section id="projects" class="flex flex-col items-center justify-center space-y-8 w-full px-8 py-16">
+          <div class="mb-8">
+            <h2 class="text-6xl text-[#F4F4F4] inline-block pr-2">MY</h2>
+            <h2 class="text-6xl text-[#F9A825] inline-block">PROJECTS</h2>
+          </div>
+          <div class="flex flex-col gap-6 w-full max-w-5xl">
+            <ProjectList client:only="react" />
+          </div>
+        </section>
+
+        <!-- Línea de gradiente entre secciones -->
+        <div class="h-1 bg-gradient-to-r from-[#01251F] via-[#A0CBB2] to-[#F9A825] border-0 mb-4"></div>
+
+        <!-- Sección de habilidades -->
+        <section id="skills" class="flex flex-col items-center justify-center space-y-8 w-full px-8 py-16">
+          <div class="mb-8">
+            <h2 class="text-6xl text-[#F4F4F4] inline-block pr-2">MY</h2>
+            <h2 class="text-6xl text-[#F9A825] inline-block">SKILLS</h2>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 w-full max-w-5xl">
+            {data.skills.map((skill) => (
+              <SkillCard
+                imageSrc={skill.imageSrc}
+                skillName={skill.skillName}
+                rating={skill.rating}
+              />
+            ))}
+          </div>
+        </section>
+
+        <!-- Línea de gradiente entre secciones -->
+        <div class="h-1 bg-gradient-to-r from-[#01251F] via-[#A0CBB2] to-[#F9A825] border-0 mb-4"></div>
+
+        <!-- Sección de referencias -->
+        <section id="references" class="flex flex-col items-center justify-center space-y-8 w-full px-8 py-16">
+          <div class="mb-8 flex flex-row">
+            <h2 class="text-6xl text-[#F4F4F4] inline-block">REFERENC</h2>
+            <h2 class="text-6xl text-[#F9A825] inline-block">ES</h2>
+          </div>
+
+          <div class="w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            {data.references.map((reference) => (
+              <ReferenceCard
+                image={reference.image}
+                name={reference.name}
+                jobTitle={reference.jobTitle}
+                company={reference.company}
+              />
+            ))}
+          </div>
+        </section>
+
+        <!-- Línea de gradiente entre secciones -->
+        <div class="h-1 bg-gradient-to-r from-[#01251F] via-[#A0CBB2] to-[#F9A825] border-0 mb-4"></div>
+
+        <!-- Sección de contacto -->
+        <section id="contact" class="flex flex-col items-center justify-center space-y-8 w-full px-8 py-16">
+          <div class="mb-8 flex flex-row">
+            <h2 class="text-6xl text-[#F4F4F4] inline-block pr-2">CONTACT</h2>
+            <h2 class="text-6xl text-[#F9A825] inline-block">ME</h2>
+          </div>
+          <div class="w-full max-w-4xl flex justify-center">
+            <ContactForm client:only="react" />
+          </div>
+        </section>
+
+      </div>
+    </Layout>
   </body>
-</html>
