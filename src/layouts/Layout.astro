@@ -1,6 +1,7 @@
 ---
 const { title } = Astro.props;
 import '../styles/input.css';
+import Nav from '../components/Nav.astro';
 ---
 
 <!doctype html>
@@ -10,11 +11,16 @@ import '../styles/input.css';
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		<meta name="generator" content={Astro.generator} />
-		<link href="/src/styles/output.css" rel="stylesheet">
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
-	</body>
+	<body class="bg-[#4C6A64] m-0 p-0">
+		<div class="flex flex-row">
+		  <Nav class="w-1/4" />
+		  <div class="flex-1">
+			<slot />
+		  </div>
+		</div>
+	  </body>
 </html>

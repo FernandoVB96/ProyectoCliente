@@ -1,0 +1,26 @@
+---
+// Props para personalizar el componente
+interface Props {
+  image: string;
+  name: string;
+  jobTitle: string;
+  company: string;
+}
+
+const { image, name, jobTitle, company } = Astro.props;
+---
+<div class="flex flex-col py-2 items-center bg-[#2C3E3A] border-2 border-[#01251F] rounded-lg shadow-md hover:shadow-[0_4px_12px_rgba(1,37,31,0.5)] hover:scale-105 transition-all duration-300">
+  <!-- Imagen -->
+  <img src={image} alt={`Foto de ${name}`} class="w-24 h-24 rounded-full object-cover mb-4">
+  
+  <!-- Nombre -->
+   <div class="w-full bg-[#01251F] rounded-t-7px px-4 flex justify-center">
+    <h2 class="text-lg font-bold text-[#F4F4F4]">{name}</h2>
+  </div>
+  
+  <!-- Descripción del puesto -->
+  <p class="text-sm text-[#F4F4F4] mt-2">{jobTitle}</p>
+
+  <!-- Descripción de la empresa -->
+  <p class="text-sm text-[#F4F4F4] mt-2">{company}</p>
+</div>

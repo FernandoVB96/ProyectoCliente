@@ -1,0 +1,130 @@
+{
+  "name": "Fernando Vaquero Buzon",
+  "about": "> Hello!. My name is Fernando, I am 28 years old. I am a web developer. My skills include HTML, CSS, JavaScript, Java, and frameworks like React, Astro, and Tailwind CSS. I enjoy creating intuitive interfaces and efficient solutions that bring ideas to life on the web."
+  ,
+  "education": [
+    {
+      "title": "Higher Vocational Training in Web Application Development",
+      "subtitle": "STA. Joaquina de Vedruna",
+      "date": "2023-2025",
+      "imageSrc": "/img/vedrunalogo-removebg-preview 1.png",
+      "link": "https://vedrunasevilla.org/"
+    },
+    {
+      "title": "Higher Vocational Training in Administration and Finance",
+      "subtitle": "Sopena Foundation",
+      "date": "2017-2029",
+      "imageSrc": "/img/sopena-removebg-preview 1.png",
+      "link": "https://sopenasevilla.org/"
+    }
+  ],
+  "work": [
+    {
+      "title": "Administrative technician",
+      "subtitle": "DHL",
+      "date": "2019",
+      "text": "Administrative Billing Functions and File Management. Monitor orders to identify potential issues before filing them. Resolve issues related to incoming orders.",
+      "imageSrc": "/img/dhllogo-removebg-preview.png"
+    },
+    {
+      "title": "Web developer",
+      "subtitle": "Vedruna",
+      "date": "PRESENT",
+      "text": "Developed end-to-end web applications by combining frontend and backend technologies. Used version control systems like Git and GitHub for collaborative development and code management.",
+      "imageSrc": "/img/sopena-removebg-preview 1.png"
+    }
+  ],
+  "skills": [
+    {
+      "skillName": "JavaScript",
+      "imageSrc": "https://i.ibb.co/PCwT8yq/jslogo-1.png",
+      "rating": 5
+    },
+    {
+      "skillName": "HTML",
+      "imageSrc": "https://i.ibb.co/0nKhdV5/htmllogo-1.png",
+      "rating": 5
+    },
+    {
+      "skillName": "CSS",
+      "imageSrc": "https://i.ibb.co/St2267f/csslogo-1.png",
+      "rating": 4
+    },
+    {
+      "skillName": "Tailwind",
+      "imageSrc": "https://i.ibb.co/3NBxnRq/twlogo-1.png",
+      "rating": 4
+    },
+    {
+      "skillName": "Astro",
+      "imageSrc": "https://i.ibb.co/Bz7YTvb/astrologo-1.png",
+      "rating": 3
+    },
+    {
+      "skillName": "React",
+      "imageSrc": "https://i.ibb.co/DWqJWtf/reactlogo-1.png",
+      "rating": 5
+    },
+    {
+      "skillName": "SpringBoot",
+      "imageSrc": "https://i.ibb.co/t4GPccg/springlogo-1.png",
+      "rating": 3
+    },
+    {
+      "skillName": "Node",
+      "imageSrc": "https://i.ibb.co/KzWQR2w/nodelogo-1.png",
+      "rating": 4
+    },
+    {
+      "skillName": "Java",
+      "imageSrc": "https://i.ibb.co/VQ5NnLz/javalogo-1.png",
+      "rating": 4
+    },
+    {
+      "skillName": "Python",
+      "imageSrc": "https://i.ibb.co/98pv88P/pythonlogo-1.png",
+      "rating": 4
+    },
+    {
+      "skillName": "MySQL",
+      "imageSrc": "https://i.ibb.co/mtNWVW3/mysqlogo-1.png",
+      "rating": 3
+    },
+    {
+      "skillName": "Git",
+      "imageSrc": "https://i.ibb.co/KKyKdjR/gitlogo-1.png",
+      "rating": 5
+    }
+  ],
+    "references": [
+      {
+        "image": "https://i.ibb.co/VwRCWdx/referenceimg.png",
+        "name": "Joaquin Borrego Fernandez",
+        "jobTitle": "Client and Server side teacher",
+        "company": "Vedruna"
+      },
+      {
+        "image": "https://i.ibb.co/VwRCWdx/referenceimg.png",
+        "name": "Jose Carlos Moreno Martin",
+        "jobTitle": "Web Interface Desing teacher",
+        "company": "Vedruna"
+      }
+    ],
+    "icons": [
+      { "imagenNormal": "/img/linkedin_icon.png", 
+        "imagenHover": "/img/linkedin_icon_selected.png", 
+        "alt": "LinkedIn Icon",
+        "link":"#"
+      },
+      { "imagenNormal": "/img/github_icon.png", 
+        "imagenHover": "/img/github_icon_selected.png", 
+        "alt": "GitHub Icon",
+        "link":"https://github.com/FernandoVB96" 
+      },
+      { "imagenNormal": "/img/facebook_icon.png", 
+        "imagenHover": "/img/facebook_icon_selected.png", 
+        "alt": "Facebook Icon",
+        "link":"https://www.facebook.com/fernando.vaquerobuzon" 
+      }
+    ]
+  }
