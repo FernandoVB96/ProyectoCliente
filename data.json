@@ -8,14 +8,14 @@
       "subtitle": "STA. Joaquina de Vedruna",
       "date": "2023-2025",
       "imageSrc": "/img/vedrunalogo-removebg-preview 1.png",
-      "link": "#"
+      "link": "https://vedrunasevilla.org/"
     },
     {
       "title": "Higher Vocational Training in Administration and Finance",
       "subtitle": "Sopena Foundation",
       "date": "2017-2029",
       "imageSrc": "/img/sopena-removebg-preview 1.png",
-      "link": "#"
+      "link": "https://sopenasevilla.org/"
     }
   ],
   "work": [
@@ -108,6 +108,23 @@
         "name": "Jose Carlos Moreno Martin",
         "jobTitle": "Web Interface Desing teacher",
         "company": "Vedruna"
+      }
+    ],
+    "icons": [
+      { "imagenNormal": "/img/linkedin_icon.png", 
+        "imagenHover": "/img/linkedin_icon_selected.png", 
+        "alt": "LinkedIn Icon",
+        "link":"#"
+      },
+      { "imagenNormal": "/img/github_icon.png", 
+        "imagenHover": "/img/github_icon_selected.png", 
+        "alt": "GitHub Icon",
+        "link":"https://github.com/FernandoVB96" 
+      },
+      { "imagenNormal": "/img/facebook_icon.png", 
+        "imagenHover": "/img/facebook_icon_selected.png", 
+        "alt": "Facebook Icon",
+        "link":"https://www.facebook.com/fernando.vaquerobuzon" 
       }
     ]
   }

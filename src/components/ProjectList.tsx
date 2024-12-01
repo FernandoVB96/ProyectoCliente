@@ -96,7 +96,7 @@ const Projects = () => {
                 {/* Imagen en la parte superior */}
                 <div className="w-full h-40 mb-4 rounded-md overflow-hidden">
                     <img
-                        src={project.picture || 'img/default-img.jpg'}  // Imagen por defecto si no hay imagen
+                        src={project.picture ?? 'img/default-img.jpg'}  // Imagen por defecto si no hay imagen
                         alt={project.name}
                         className="w-full h-full object-cover"
                     />
@@ -119,9 +119,9 @@ const Projects = () => {
                             href={project.repository_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all duration-300"
+                            className="bg-[#A0CBB2] text-[#01251F] px-4 py-2 rounded-md hover:bg-[#F9A825] transition-all duration-300"
                         >
-                            Visitar Proyecto
+                            Visit Project
                         </a>
                     )}
     
@@ -129,9 +129,9 @@ const Projects = () => {
                     {test && (
                         <button
                             onClick={() => handleDelete(project.id)}
-                            className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-all duration-300"
+                            className="bg-red-500 text-[#F4F4F4] px-4 py-2 rounded-md hover:bg-red-600 transition-all duration-300"
                         >
-                            Eliminar
+                            Delete
                         </button>
                     )}
                 </div>
@@ -165,22 +165,22 @@ const Projects = () => {
                 <button
                     onClick={() => setPage(page - 1)}
                     disabled={page === 0}
-                    className="bg-blue-500 text-white px-6 py-3 rounded-lg disabled:bg-gray-300 hover:bg-blue-600 transition-all duration-300 transform hover:scale-105"
+                    className="bg-[#01251F] text-[#F4F4F4] px-6 py-3 rounded-lg disabled:bg-[#A0CBB2] disabled:text-[#01251F] hover:bg-[#F9A825] transition-all duration-300 transform hover:scale-105"
                 >
-                    Página anterior
+                    Previous Page
                 </button>
 
                 {/* Número de página actual con diseño personalizado */}
-                <div className="flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold text-lg rounded-full w-12 h-12 shadow-md transform transition-transform duration-300 hover:scale-110">
+                <div className="flex items-center justify-center bg-gradient-to-r from-[#01251F] via-[#A0CBB2] to-[#F9A825] text-[#01251F] font-bold text-lg rounded-full w-12 h-12 shadow-md transform transition-transform duration-300 hover:scale-110">
                     {page + 1}
                 </div>
 
                 <button
                     onClick={() => setPage(page + 1)}
                     disabled={posts.length === 0 || page === totalPages - 1}
-                    className="bg-blue-500 text-white px-6 py-3 rounded-lg disabled:bg-gray-300 hover:bg-blue-600 transition-all duration-300 transform hover:scale-105"
+                    className="bg-[#01251F] text-[#F4F4F4] px-6 py-3 rounded-lg disabled:bg-[#A0CBB2] disabled:text-[#01251F] hover:bg-[#F9A825] transition-all duration-300 transform hover:scale-105"
                 >
-                    Página siguiente
+                    Next Page
                 </button>
             </div>
         </>

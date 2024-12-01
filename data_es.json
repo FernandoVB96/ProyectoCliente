@@ -109,5 +109,22 @@
         "jobTitle": "Web Interface Desing teacher",
         "company": "Vedruna"
       }
+    ],
+    "icons": [
+      { "imagenNormal": "/img/linkedin_icon.png", 
+        "imagenHover": "/img/linkedin_icon_selected.png", 
+        "alt": "LinkedIn Icon",
+        "link":"#"
+      },
+      { "imagenNormal": "/img/github_icon.png", 
+        "imagenHover": "/img/github_icon_selected.png", 
+        "alt": "GitHub Icon",
+        "link":"#" 
+      },
+      { "imagenNormal": "/img/facebook_icon.png", 
+        "imagenHover": "/img/facebook_icon_selected.png", 
+        "alt": "Facebook Icon",
+        "link":"https://www.facebook.com/fernando.vaquerobuzon" 
+      }
     ]
   }

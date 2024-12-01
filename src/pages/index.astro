@@ -23,7 +23,7 @@ const testMode = true;
       <div class=" w-full">
 
         <!-- Sección About Me -->
-        <section id="about" class="flex flex-col items-center justify-center w-full px-8 py-16 h-screen space-y-0">
+        <section id="about" class="flex flex-col items-center justify-center w-full px-8 py-16 space-y-0 min-h-screen">
           <!-- Títulos -->
           <div class="mb-8 flex flex-row">
             <h2 class="text-6xl text-[#F4F4F4] inline-block pr-2">ABOUT</h2>
@@ -119,7 +119,7 @@ const testMode = true;
             <h2 class="text-6xl text-[#F4F4F4] inline-block pr-2">MY</h2>
             <h2 class="text-6xl text-[#F9A825] inline-block">SKILLS</h2>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 w-full max-w-5xl">
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 w-full max-w-5xl">
             {data.skills.map((skill) => (
               <SkillCard
                 imageSrc={skill.imageSrc}

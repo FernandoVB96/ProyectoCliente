@@ -2,22 +2,17 @@
 import Boton from './Boton.astro'; // Importa el componente Boton
 import Icon from './Icon.astro';
 
-const iconos = [
-  { imagenNormal: '/img/linkedin_icon.png', imagenHover: '/img/linkedin_icon_selected.png', alt: 'LinkedIn Icon' },
-  { imagenNormal: '/img/github_icon.png', imagenHover: '/img/github_icon_selected.png', alt: 'GitHub Icon' },
-  { imagenNormal: '/img/facebook_icon.png', imagenHover: '/img/facebook_icon_selected.png', alt: 'Facebook Icon' }
-];
 const { searchParams } = new URL(Astro.request.url);
 const language = searchParams.get('lang') || 'en';
 const data = language === 'es' ? await import('../../data_es.json') : await import('../../data.json');
 ---
 
-<nav class="sticky top-0 left-0 h-screen w-1/4 bg-[#01251F] flex flex-col items-center justify-between">
+<nav class="sticky top-0 left-0 h-screen w-full sm:w-1/4 bg-[#01251F] flex flex-col justify-between items-center p-4">
   <!-- Contenedor del círculo con la imagen -->
-  <div class="flex justify-center items-center mt-8">
-    <div class="w-[10vw] h-[10vw]  rounded-full bg-yellow-500 flex justify-center items-center overflow-hidden">
+  <div class="flex-shrink-0 flex justify-center items-center">
+    <div class="w-[18vw] h-[18vw] sm:w-[8vw] sm:h-[8vw] rounded-full flex justify-center items-center overflow-hidden">
       <img
-        src="/img/your-portrait.jpg" 
+        src="/img/retrato.png"
         alt="Fernando Vaquero Buzon"
         class="w-full h-full object-cover"
       />
@@ -25,63 +20,54 @@ const data = language === 'es' ? await import('../../data_es.json') : await impo
   </div>
 
   <!-- Título con el nombre -->
-  <h1 class="text-[#a0cbb2] text-4xl font-bold mt-6">
+  <h1 class="text-[#a0cbb2] text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center pb-2 flex-shrink-0">
     {data.name}
   </h1>
 
   <!-- Contenedor de la frase -->
-  <div class="w-full mt-4 flex flex-col items-center justify-center relative">
-    <!-- Línea superior -->
+  <div class="flex flex-col items-center w-full gap-2 flex-shrink-0">
     <div class="w-full h-px border border-[#a0cbb2]"></div>
-  
-    <!-- Contenido de la frase -->
-    <div class="text-center mt-4 p-4 flex flex-col items-center">
-      <span class="text-[#a0cbb2] text-2xl font-normal font-['Inter']">
+    <div class="text-center px-2">
+      <span class="text-[#a0cbb2] text-sm sm:text-base block">
         Stay hungry, stay foolish.
       </span>
-      <br />
-      <span class="text-[#a0cbb2] text-xl font-normal font-['Inter']">
+      <span class="text-[#a0cbb2] text-xs sm:text-sm">
         - Steve Jobs
       </span>
     </div>
-  
-    <!-- Línea inferior -->
     <div class="w-full h-px border border-[#a0cbb2]"></div>
   </div>
-  
 
-  <!-- Contenedor de iconos y botones -->
-  <div class="flex flex-col w-full">
-    <!-- Iconos encima de los botones -->
-    <div class="flex justify-center space-x-4 mb-6">
-      {iconos.map((icono) => (
-        <Icon
-          key={icono.alt}
-          imagenNormal={icono.imagenNormal}
-          imagenHover={icono.imagenHover}
-          alt={icono.alt}
-          size="w-14 h-14"
-        />
-      ))}
-    </div>
-
-    <!-- Lista de botones -->
-    <ul class="w-full mt-2">
-      <li><Boton text="ABOUT ME" link="#aboutme" /></li>
-      <li><Boton text="EDUCATION" link="#education" /></li>
-      <li><Boton text="WORK EXPERIENCE" link="#work" /></li>
-      <li><Boton text="PROJECTS" link="#projects" /></li>
-      <li><Boton text="MY SKILLS" link="#skills" /></li>
-      <li><Boton text="REFERENCES" link="#references" /></li>
-      <li>
-        <Boton
-          text="CONTACT ME"
-          link="#contact"
-          reverse
-          isLastButton
-          hoverBgColor="hover:bg-[#F9A825]"
-        />
-      </li>
-    </ul>
+  <!-- Contenedor de iconos -->
+  <div class="flex justify-center space-x-2 sm:space-x-3 py-4 flex-shrink-0">
+    {data.icons.map((icon) => (
+      <Icon
+        key={icon.alt}
+        imagenNormal={icon.imagenNormal}
+        imagenHover={icon.imagenHover}
+        alt={icon.alt}
+        link={icon.link}
+        size="w-8 h-8 sm:w-10 sm:h-10"
+      />
+    ))}
   </div>
+
+  <!-- Lista de botones -->
+  <ul class="w-full flex flex-col flex-grow justify-evenly">
+    <li><Boton text="ABOUT ME" link="#about" /></li>
+    <li><Boton text="EDUCATION" link="#education" /></li>
+    <li><Boton text="WORK EXPERIENCE" link="#work" /></li>
+    <li><Boton text="PROJECTS" link="#projects" /></li>
+    <li><Boton text="MY SKILLS" link="#skills" /></li>
+    <li><Boton text="REFERENCES" link="#references" /></li>
+    <li>
+      <Boton
+        text="CONTACT ME"
+        link="#contact"
+        reverse
+        isLastButton
+        hoverBgColor="hover:bg-[#F9A825]"
+      />
+    </li>
+  </ul>
 </nav>

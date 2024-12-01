@@ -1,21 +1,22 @@
 ---
-const { imagenNormal, imagenHover, alt, size = "w-24 h-24" } = Astro.props;
+const { imagenNormal, imagenHover, alt, link, size = "w-24 h-24" } = Astro.props;
 ---
-
-<button
-  class={`relative ${size} cursor-pointer focus:outline-none transform transition-all duration-300 ease-in-out hover:scale-105`}
-  aria-label={alt}
->
-  <!-- Imagen normal -->
-  <img
-    src={imagenNormal}
-    alt={alt}
-    class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 hover:opacity-0"
-  />
-  <!-- Imagen al hacer hover -->
-  <img
-    src={imagenHover}
-    alt={`${alt} Hover`}
-    class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 hover:opacity-100"
-  />
-</button>
+<a href={link} target="_blank" rel="noopener noreferrer">
+  <button
+    class={`relative ${size} cursor-pointer focus:outline-none transform transition-all duration-300 ease-in-out hover:scale-105`}
+    aria-label={alt}
+  >
+    <!-- Imagen normal -->
+    <img
+      src={imagenNormal}
+      alt={alt}
+      class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 hover:opacity-0"
+    />
+    <!-- Imagen al hacer hover -->
+    <img
+      src={imagenHover}
+      alt={`${alt} Hover`}
+      class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 hover:opacity-100"
+    />
+  </button>
+</a>
