@@ -9,6 +9,9 @@ export default {
         typing: 'typing 4s steps(30) 1s 1 normal both',
         blink: 'blink 0.75s step-end infinite',
       },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
       keyframes: {
         typing: {
           '0%': { width: '0' },
