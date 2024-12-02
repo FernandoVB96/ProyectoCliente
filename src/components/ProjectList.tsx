@@ -13,7 +13,12 @@ interface Project {
     developers: string[];
 }
 
-const Projects = () => {
+// Aseguramos que testMode es un prop que se pasa desde el archivo .astro
+interface ProjectListProps {
+    testMode: boolean;
+}
+
+const Projects = ({ testMode }: ProjectListProps) => {
     const [page, setPage] = useState(0); // Página inicial
     const [posts, setPosts] = useState<Project[]>([]); // Proyectos de la página actual
     const [totalPages, setTotalPages] = useState(0); // Total de páginas disponibles
@@ -69,7 +74,7 @@ const Projects = () => {
                     statusProjectName: project.statusProjectName,
                     technologies: project.technologies || [],
                     developers: project.developers || [],
-                })) || []);
+                })) || []); 
                 setTotalPages(data.totalPages || 1); // Total de páginas para la paginación
             }
         } catch (error) {
@@ -156,7 +161,7 @@ const Projects = () => {
             {/* Lista de proyectos */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {posts.map((project) => (
-                    <ProjectCard key={project.id} project={project} test={true} />
+                    <ProjectCard key={project.id} project={project} test={testMode} />
                 ))}
             </div>
 
@@ -170,14 +175,12 @@ const Projects = () => {
                     Previous Page
                 </button>
 
-                {/* Número de página actual con diseño personalizado */}
-                <div className="flex items-center justify-center bg-gradient-to-r from-[#01251F] via-[#A0CBB2] to-[#F9A825] text-[#01251F] font-bold text-lg rounded-full w-12 h-12 shadow-md transform transition-transform duration-300 hover:scale-110">
-                    {page + 1}
-                </div>
+                {/* Número de página actual con estilo */}
+                <span className="text-[#F4F4F4] text-lg">{page + 1}</span>
 
                 <button
                     onClick={() => setPage(page + 1)}
-                    disabled={posts.length === 0 || page === totalPages - 1}
+                    disabled={page >= totalPages - 1}
                     className="bg-[#01251F] text-[#F4F4F4] px-6 py-3 rounded-lg disabled:bg-[#A0CBB2] disabled:text-[#01251F] hover:bg-[#F9A825] transition-all duration-300 transform hover:scale-105"
                 >
                     Next Page
