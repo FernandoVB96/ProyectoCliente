@@ -42,7 +42,7 @@ const Projects = ({ testMode }: ProjectListProps) => {
             const data = await response.json();
 
             if (search) {
-                // Verificamos si hay proyectos en la respuesta
+                // Verificamos si hay proyectos en la respuesta 
                 const projects = data.data?.map((project: any) => ({
                     id: project.id,
                     name: project.name,
