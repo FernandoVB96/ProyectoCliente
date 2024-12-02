@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// Definimos el tipo para el proyecto
 interface Project {
     id: number;
     name: string;
@@ -13,39 +12,35 @@ interface Project {
     developers: string[];
 }
 
-// Aseguramos que testMode es un prop que se pasa desde el archivo .astro
 interface ProjectListProps {
     testMode: boolean;
 }
 
 const Projects = ({ testMode }: ProjectListProps) => {
-    const [page, setPage] = useState(0); // Página inicial
-    const [posts, setPosts] = useState<Project[]>([]); // Proyectos de la página actual
-    const [totalPages, setTotalPages] = useState(0); // Total de páginas disponibles
-    const [searchTerm, setSearchTerm] = useState(''); // Término de búsqueda
+    const [page, setPage] = useState(0);
+    const [posts, setPosts] = useState<Project[]>([]);
+    const [totalPages, setTotalPages] = useState(0);
+    const [searchTerm, setSearchTerm] = useState('');
 
-    // URL base de la API
     const url: string = "http://localhost:8080/api/v1/projects";
 
     // Hacemos la petición cuando cambie la página o el término de búsqueda
     useEffect(() => {
-        peti(page, searchTerm); // Llamamos a la API con la búsqueda actual
+        peticion(page, searchTerm);
     }, [page, searchTerm]);
 
     // Función para hacer la petición a la API usando el endpoint de búsqueda por nombre
-    const peti = async (p = 0, search = '') => {
-        // Si la búsqueda tiene menos de 3 caracteres, no realizamos la petición
+    const peticion = async (p = 0, search = '') => {
         if (search && search.length < 3) return;
 
         const requestUrl = search
-            ? `${url}/${search}` // Búsqueda por nombre
-            : `${url}?size=3&page=${p}`;  // Paginación sin búsqueda
+            ? `${url}/${search}`
+            : `${url}?size=3&page=${p}`; 
 
         try {
             const response = await fetch(requestUrl);
             const data = await response.json();
 
-            // Si estamos buscando por nombre
             if (search) {
                 // Verificamos si hay proyectos en la respuesta
                 const projects = data.data?.map((project: any) => ({
@@ -60,8 +55,8 @@ const Projects = ({ testMode }: ProjectListProps) => {
                     developers: project.developers || [],
                 })) || [];
                 
-                setPosts(projects); // Asignamos los proyectos encontrados
-                setTotalPages(1); // Solo hay una página de resultados para la búsqueda
+                setPosts(projects);
+                setTotalPages(1);
             } else {
                 // Si no hay búsqueda, asignamos los proyectos paginados
                 setPosts(data.content?.map((project: any) => ({
@@ -75,7 +70,7 @@ const Projects = ({ testMode }: ProjectListProps) => {
                     technologies: project.technologies || [],
                     developers: project.developers || [],
                 })) || []); 
-                setTotalPages(data.totalPages || 1); // Total de páginas para la paginación
+                setTotalPages(data.totalPages || 1);
             }
         } catch (error) {
             console.error('Error al hacer la búsqueda', error);
@@ -130,7 +125,7 @@ const Projects = ({ testMode }: ProjectListProps) => {
                         </a>
                     )}
     
-                    {/* Botón de eliminar (opcional) */}
+                    {/* Botón de eliminar */}
                     {test && (
                         <button
                             onClick={() => handleDelete(project.id)}
@@ -153,7 +148,7 @@ const Projects = ({ testMode }: ProjectListProps) => {
                     placeholder="Buscar por nombre"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && peti(page, searchTerm)} // Búsqueda al presionar "Enter"
+                    onKeyDown={(e) => e.key === 'Enter' && peticion(page, searchTerm)}
                     className="w-full max-w-xs p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
                 />
             </div>
