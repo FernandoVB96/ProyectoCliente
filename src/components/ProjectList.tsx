@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// Definimos el tipo para el proyecto
 interface Project {
     id: number;
     name: string;
@@ -13,34 +12,35 @@ interface Project {
     developers: string[];
 }
 
-const Projects = () => {
-    const [page, setPage] = useState(0); // Página inicial
-    const [posts, setPosts] = useState<Project[]>([]); // Proyectos de la página actual
-    const [totalPages, setTotalPages] = useState(0); // Total de páginas disponibles
-    const [searchTerm, setSearchTerm] = useState(''); // Término de búsqueda
+interface ProjectListProps {
+    testMode: boolean;
+}
 
-    // URL base de la API
+const Projects = ({ testMode }: ProjectListProps) => {
+    const [page, setPage] = useState(0);
+    const [posts, setPosts] = useState<Project[]>([]);
+    const [totalPages, setTotalPages] = useState(0);
+    const [searchTerm, setSearchTerm] = useState('');
+
     const url: string = "http://localhost:8080/api/v1/projects";
 
     // Hacemos la petición cuando cambie la página o el término de búsqueda
     useEffect(() => {
-        peti(page, searchTerm); // Llamamos a la API con la búsqueda actual
+        peticion(page, searchTerm);
     }, [page, searchTerm]);
 
     // Función para hacer la petición a la API usando el endpoint de búsqueda por nombre
-    const peti = async (p = 0, search = '') => {
-        // Si la búsqueda tiene menos de 3 caracteres, no realizamos la petición
+    const peticion = async (p = 0, search = '') => {
         if (search && search.length < 3) return;
 
         const requestUrl = search
-            ? `${url}/${search}` // Búsqueda por nombre
-            : `${url}?size=3&page=${p}`;  // Paginación sin búsqueda
+            ? `${url}/${search}`
+            : `${url}?size=3&page=${p}`; 
 
         try {
             const response = await fetch(requestUrl);
             const data = await response.json();
 
-            // Si estamos buscando por nombre
             if (search) {
                 // Verificamos si hay proyectos en la respuesta
                 const projects = data.data?.map((project: any) => ({
@@ -55,8 +55,8 @@ const Projects = () => {
                     developers: project.developers || [],
                 })) || [];
                 
-                setPosts(projects); // Asignamos los proyectos encontrados
-                setTotalPages(1); // Solo hay una página de resultados para la búsqueda
+                setPosts(projects);
+                setTotalPages(1);
             } else {
                 // Si no hay búsqueda, asignamos los proyectos paginados
                 setPosts(data.content?.map((project: any) => ({
@@ -69,8 +69,8 @@ const Projects = () => {
                     statusProjectName: project.statusProjectName,
                     technologies: project.technologies || [],
                     developers: project.developers || [],
-                })) || []);
-                setTotalPages(data.totalPages || 1); // Total de páginas para la paginación
+                })) || []); 
+                setTotalPages(data.totalPages || 1);
             }
         } catch (error) {
             console.error('Error al hacer la búsqueda', error);
@@ -125,7 +125,7 @@ const Projects = () => {
                         </a>
                     )}
     
-                    {/* Botón de eliminar (opcional) */}
+                    {/* Botón de eliminar */}
                     {test && (
                         <button
                             onClick={() => handleDelete(project.id)}
@@ -148,7 +148,7 @@ const Projects = () => {
                     placeholder="Buscar por nombre"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && peti(page, searchTerm)} // Búsqueda al presionar "Enter"
+                    onKeyDown={(e) => e.key === 'Enter' && peticion(page, searchTerm)}
                     className="w-full max-w-xs p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
                 />
             </div>
@@ -156,7 +156,7 @@ const Projects = () => {
             {/* Lista de proyectos */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {posts.map((project) => (
-                    <ProjectCard key={project.id} project={project} test={true} />
+                    <ProjectCard key={project.id} project={project} test={testMode} />
                 ))}
             </div>
 
@@ -170,14 +170,12 @@ const Projects = () => {
                     Previous Page
                 </button>
 
-                {/* Número de página actual con diseño personalizado */}
-                <div className="flex items-center justify-center bg-gradient-to-r from-[#01251F] via-[#A0CBB2] to-[#F9A825] text-[#01251F] font-bold text-lg rounded-full w-12 h-12 shadow-md transform transition-transform duration-300 hover:scale-110">
-                    {page + 1}
-                </div>
+                {/* Número de página actual con estilo */}
+                <span className="text-[#F4F4F4] text-lg">{page + 1}</span>
 
                 <button
                     onClick={() => setPage(page + 1)}
-                    disabled={posts.length === 0 || page === totalPages - 1}
+                    disabled={page >= totalPages - 1}
                     className="bg-[#01251F] text-[#F4F4F4] px-6 py-3 rounded-lg disabled:bg-[#A0CBB2] disabled:text-[#01251F] hover:bg-[#F9A825] transition-all duration-300 transform hover:scale-105"
                 >
                     Next Page

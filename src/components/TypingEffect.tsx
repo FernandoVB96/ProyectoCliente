@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 
-// Definimos la interfaz para las props que recibirá el componente
 interface TypingEffectProps {
-  text: string;  // El texto que se mostrará con el efecto de escritura
-  speed?: number; // Velocidad opcional del efecto (en milisegundos)
+  text: string;
+  speed?: number;
 }
 
 const TypingEffect: React.FC<TypingEffectProps> = ({ text, speed = 100 }) => {
