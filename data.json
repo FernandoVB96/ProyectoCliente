@@ -38,7 +38,7 @@
     {
       "skillName": "JavaScript",
       "imageSrc": "https://i.ibb.co/PCwT8yq/jslogo-1.png",
-      "rating": 5
+      "rating": 4
     },
     {
       "skillName": "HTML",
@@ -58,12 +58,12 @@
     {
       "skillName": "Astro",
       "imageSrc": "https://i.ibb.co/Bz7YTvb/astrologo-1.png",
-      "rating": 3
+      "rating": 4
     },
     {
       "skillName": "React",
       "imageSrc": "https://i.ibb.co/DWqJWtf/reactlogo-1.png",
-      "rating": 5
+      "rating": 4
     },
     {
       "skillName": "SpringBoot",
@@ -73,27 +73,27 @@
     {
       "skillName": "Node",
       "imageSrc": "https://i.ibb.co/KzWQR2w/nodelogo-1.png",
-      "rating": 4
+      "rating": 3
     },
     {
       "skillName": "Java",
       "imageSrc": "https://i.ibb.co/VQ5NnLz/javalogo-1.png",
-      "rating": 4
+      "rating": 5
     },
     {
       "skillName": "Python",
       "imageSrc": "https://i.ibb.co/98pv88P/pythonlogo-1.png",
-      "rating": 4
+      "rating": 3
     },
     {
       "skillName": "MySQL",
       "imageSrc": "https://i.ibb.co/mtNWVW3/mysqlogo-1.png",
-      "rating": 3
+      "rating": 4
     },
     {
       "skillName": "Git",
       "imageSrc": "https://i.ibb.co/KKyKdjR/gitlogo-1.png",
-      "rating": 5
+      "rating": 4
     }
   ],
     "references": [
