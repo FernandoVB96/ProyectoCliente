@@ -8,9 +8,7 @@ import ReferenceCard from "../components/ReferenceCard.astro";
 import ContactForm from "../components/ContactForm";
 import TypingEffect from "../components/TypingEffect";
 
-const { searchParams } = new URL(Astro.request.url);
-const language = searchParams.get('lang') || 'en';
-const data = language === 'es' ? await import('../../data_es.json') : await import('../../data.json');
+const data = await import('../../data.json');
 const testMode = true;
 ---
 

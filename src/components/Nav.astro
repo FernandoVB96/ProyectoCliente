@@ -2,9 +2,7 @@
 import Boton from './Boton.astro'; // Importa el componente Boton
 import Icon from './Icon.astro';
 
-const { searchParams } = new URL(Astro.request.url);
-const language = searchParams.get('lang') || 'en';
-const data = language === 'es' ? await import('../../data_es.json') : await import('../../data.json');
+const data =  await import('../../data.json');
 ---
 
 <nav class="sticky top-0 left-0 h-screen w-full sm:w-1/4 bg-[#01251F] flex flex-col justify-between items-center p-4">
